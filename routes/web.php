@@ -1,12 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DataController;
+use App\Http\Controllers\LaporanController;
 
-Route::get('/form', [DataController::class, 'form']);
-Route::post('/submit', [DataController::class, 'submit']);
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::redirect('/', '/laporan');
+Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
+Route::get('/laporan/buat', [LaporanController::class, 'create'])->name('laporan.form');
+Route::post('/laporan', [LaporanController::class, 'store'])->name('laporan.submit');
