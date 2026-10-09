@@ -3,7 +3,7 @@
 @section('content')
     <h2 class="text-2xl font-bold text-blue-800 mb-4">Konfirmasi Laporan</h2>
 
-    <x-alert type="success" message="Laporan banjir berhasil dikirim." />
+    <x-alert type="success" message="Laporan banjir dari {{ $laporan->nama_pelapor }} di {{ $laporan->lokasi }} berhasil dikirim." />
 
     @include('partials.laporan-card', ['laporan' => $laporan])
 

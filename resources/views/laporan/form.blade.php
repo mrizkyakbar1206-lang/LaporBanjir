@@ -11,8 +11,8 @@
         <form action="{{ route('laporan.submit') }}" method="POST" class="flex flex-col gap-3">
             @csrf
             <div>
-                <label for="nama" class="text-blue-900 font-medium">Nama Pelapor:</label>
-                <input type="text" id="nama" name="nama" value="{{ old('nama') }}" required
+                <label for="nama_pelapor" class="text-blue-900 font-medium">Nama Pelapor:</label>
+                <input type="text" id="nama_pelapor" name="nama_pelapor" value="{{ old('nama_pelapor') }}" required
                     class="w-full mt-1 border border-blue-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
             </div>
 
@@ -24,7 +24,13 @@
 
             <div>
                 <label for="tinggi_air" class="text-blue-900 font-medium">Tinggi Genangan Air (cm):</label>
-                <input type="number" id="tinggi_air" name="tinggi_air" min="0" value="{{ old('tinggi_air') }}" required
+                <input type="number" id="tinggi_genangan" name="tinggi_genangan" min="0" value="{{ old('tinggi_genangan') }}" required
+                    class="w-full mt-1 border border-blue-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+
+            <div>
+                <label for="tanggal" class="text-blue-900 font-medium">Tanggal Kejadian:</label>
+                <input type="date" id="tanggal_kejadian" name="tanggal_kejadian" value="{{ old('tanggal_kejadian') }}" required
                     class="w-full mt-1 border border-blue-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
             </div>
 
