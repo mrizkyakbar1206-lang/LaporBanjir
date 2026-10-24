@@ -12,7 +12,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        // Petugas yang sudah login dan membuka /login atau /register
+        // langsung diarahkan ke halaman Daftar Laporan.
+        $middleware->redirectUsersTo(fn () => route('laporan.index'));
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

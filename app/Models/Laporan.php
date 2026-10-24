@@ -2,16 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 
+#[Fillable(['nama', 'lokasi', 'deskripsi'])]
 class Laporan extends Model
 {
-    protected $table = 'laporan';
-
-    protected $fillable = [
-        'nama_pelapor',
-        'lokasi',
-        'tinggi_genangan',
-        'tanggal_kejadian',
-    ];
+    //
 }

@@ -3,32 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Laporan;
-use Illuminate\Http\Request;
 
 class LaporanController extends Controller
 {
+    // Daftar laporan masuk (hanya petugas yang sudah login)
     public function index()
     {
-        $laporan = Laporan::all();
-        return view('laporan.index', compact('laporan'));
+        $laporans = Laporan::latest()->paginate(10);
+
+        return view('laporan.index', compact('laporans'));
     }
 
-    public function create()
+    // Menghapus laporan (hanya petugas yang sudah login)
+    public function destroy(Laporan $laporan)
     {
-        return view('laporan.form');
-    }
+        $laporan->delete();
 
-    public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'nama_pelapor'     => 'required|string|max:255',
-            'lokasi'           => 'required|string|max:255',
-            'tinggi_genangan'  => 'required|integer|min:1',
-            'tanggal_kejadian' => 'required|date',
-        ]);
-
-        $laporan = Laporan::create($validated);
-
-        return view('laporan.hasil', compact('laporan'));
+        return redirect()->route('laporan.index')
+            ->with('success', 'Laporan berhasil dihapus.');
     }
 }
